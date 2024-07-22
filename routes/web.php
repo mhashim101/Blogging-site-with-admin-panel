@@ -6,11 +6,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 
-Route::get('/allusers',[UserController::class,'showAllUsersPage'])->name('allusers');
 Route::get('/homepage',[UserController::class,'showHomePage'])->name('homepage');
 Route::get('/homepage/postblog',[UserController::class,'showPostBlogPage'])->name('postblog');
 Route::get('/',[UserController::class,'showLoginForm'])->name('loginPage');
 Route::get('/register',[UserController::class,'showRegistrationForm'])->name('registerPage');
+Route::get('/allusers',[UserController::class,'showAllUsersPage'])->name('allusers')->middleware(ValidUser::class);
 Route::get('/addpost',[UserController::class,'addPostPage'])->name('addpost')->middleware(ValidUser::class);
 Route::get('/allposts',[UserController::class,'allPostsPage'])->name('allposts')->middleware(ValidUser::class);
 Route::get('/deletebyid',[UserController::class,'deletePostPage'])->name('deletebyid')->middleware(ValidUser::class);

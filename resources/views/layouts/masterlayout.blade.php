@@ -110,26 +110,19 @@
                                     </li>
                                     <li class="nav-item text-decoration-none ">
                                         <a href="{{route('allusers')}}" class="nav-link text-light" >
-                                            <img src="{{asset('img/icons8-delete-100.png')}}" alt=""> 
+                                            <img src="{{asset('img/users-icon.png')}}" alt=""> 
                                             Users
                                         </a>
                                     </li>
                                     <li class="nav-item text-decoration-none ">
-                                        <div class="dropdown w-100">
-                                            <button class="btn primaryAnchor d-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{asset('img/icons8-delete-100.png')}}" alt=""> 
-                                              Dropdown button
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                              <li><a class="dropdown-item" href="#">Action</a></li>
-                                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                          </div>
+                                        <a href="{{route('allusers')}}" class="nav-link text-light" >
+                                            <img src="{{asset('img/categories-icon.png')}}" alt=""> 
+                                            Categories
+                                        </a>
                                     </li>
                                     <li class="nav-item text-decoration-none ">
                                         <a href="#" class="nav-link text-light" >
-                                            <img src="{{asset('img/icons8-delete-100.png')}}" alt=""> 
+                                            <img src="{{asset('img/comments-icon.png')}}" alt=""> 
                                             Comments
                                         </a>
                                     </li>
@@ -206,6 +199,24 @@
                                                                     <a href="{{route('deletebyid')}}" class="nav-link text-light" >
                                                                         <img src="{{asset('img/icons8-delete-100.png')}}" alt=""> 
                                                                         Delete Post
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item text-decoration-none ">
+                                                                    <a href="{{route('allusers')}}" class="nav-link text-light" >
+                                                                        <img src="{{asset('img/users-icon.png')}}" alt=""> 
+                                                                        Users
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item text-decoration-none ">
+                                                                    <a href="{{route('allusers')}}" class="nav-link text-light" >
+                                                                        <img src="{{asset('img/categories-icon.png')}}" alt=""> 
+                                                                        Categories
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item text-decoration-none ">
+                                                                    <a href="#" class="nav-link text-light" >
+                                                                        <img src="{{asset('img/comments-icon.png')}}" alt=""> 
+                                                                        Comments
                                                                     </a>
                                                                 </li>
                                                             </ul>
