@@ -54,6 +54,12 @@ class UserController extends Controller
      {
          return view('dashboard');
      }
+     // Show dashboard form
+     public function showAllUsersPage()
+     {
+        $users  = User::where('id','!=',Auth::user()->id)->paginate(5);
+         return view('allusers',compact('users'));
+     }
      // Show addPostPage form
      public function addPostPage()
      {

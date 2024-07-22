@@ -109,7 +109,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item text-decoration-none ">
-                                        <a href="" class="nav-link text-light" >
+                                        <a href="{{route('allusers')}}" class="nav-link text-light" >
                                             <img src="{{asset('img/icons8-delete-100.png')}}" alt=""> 
                                             Users
                                         </a>
