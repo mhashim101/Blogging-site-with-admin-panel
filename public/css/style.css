@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+
+.karla-font {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  #ul-a a{
+    font-size: 19px;
+    padding: 12px;
+}
+#ul-a a:hover{
+    background-color: #D6EFD8;
+    color: #1A5319!important;
+    font-weight: bold;
+}
+#ul-a li:hover{
+    background-color: #D6EFD8;
+    color: #1A5319!important;
+    font-weight: bold;
+}
+#ul-a img{
+    width: 30px;
+    margin-right: 10px;
+}
+.dash-box{
+    padding: 18px;
+    background-color: #1A5319;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #f0f0f0;
+    box-shadow: 4px 5px 8px -3px black;
+    font-size: 24px;
+}
+.dash-box:hover{
+    opacity: 1;
+    background-color: #508D4E;
+}
+.primaryBtn:hover{
+    background-color: #D6EFD8!important;
+    border: 2px solid #1A5319!important;
+    color: #1A5319;
+}
+.primaryBtn{
+    border: 2px solid #1A5319!important;
+    background-color: #1A5319 !important;
+    color: #f0f0f0;
+}
+.primaryAnchor:hover, .primaryAnchor:hover ~ li {
+    background-color: #D6EFD8!important;
+    border: none;
+    color: #1A5319;
+    transition: none !important;
+    outline: none !important;
+    border-radius: 0;
+  
+}
+.primaryAnchor{
+    border: none;
+    background-color: #1A5319 !important;
+    color: #f0f0f0;
+    transition: none !important;
+    border-radius: 0;
+    outline: none !important;
+}
+
+
+/* Dropdown Button Mobile View */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #1A5319;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+  }
+
+  /* .sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 250px;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  } */
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+  }
+
+/* Side Panel */
+#mySidepanel{
+    /* background-color: #1A5319;      */
+    background-color: #1A5319;
+    height: 100%;
+    position: fixed;
+    /* overflow-y: auto; */
+    /* width: 200px; */
+}
+
+
+.post_profile{
+    border-radius: 100px; 
+    border: 5px solid lightgray;
+    width: 80px;
+}

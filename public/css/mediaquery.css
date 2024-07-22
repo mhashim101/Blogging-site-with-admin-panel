@@ -1,0 +1,185 @@
+/* Media Query */
+@media (max-width: 576px) {
+    /* Admin Panel */
+    /* #mySidepanel{
+        width: 200px!important;
+    } */
+    /* Admin profile */
+    #mySidepanel .profile{
+        width: 80px !important;
+    }
+    .profile, .role, .title{
+        text-align: center;
+    }
+    .title, .role{
+        font-size: 0.8rem!important;
+    }
+
+    /* Admin Header */
+    .adminHeader{
+        padding-top: 18px!important;
+        padding-bottom: 18px!important;
+    }
+
+/* Dashboard Boxes */
+    .dash-box{
+        display: block;
+        width: 200px!important;
+    }
+    .dash-box img{
+        width: 60px!important;
+    }
+    .dash-box span{
+        font-size: 1.3rem!important;
+    }
+    /* Dashboard Box Image */
+    #ul-a img{
+        width: 25px!important;
+    }
+    #ul-a a{
+        font-size: 15px!important;
+    }
+/* Genetal */
+    /* p,a,span,li,button{
+        font-size: 1.rem!important;
+        } */
+}
+
+@media (min-width: 576px) { 
+    /* #mySidepanel .profile{
+        width: 3rem !important;
+    } */
+    /* .profile, .role, .title{
+        text-align: center;
+    } */
+     /* Admin Panel */
+    /* #mySidepanel{
+        width: 200px!important;
+    } */
+    /* Admin profile */
+    #mySidepanel .profile{
+        width: 80px !important;
+    }
+    .profile, .role, .title{
+        text-align: center;
+    }
+    .title, .role{
+        font-size: 0.8rem!important;
+    }
+    #ul-a a{
+        font-size: 15px!important;
+    }
+    .adminHeader{
+        padding-top: 18px!important;
+        padding-bottom: 18px!important;
+    }
+    .dash-box img{
+        width: 60px!important;
+    }
+    .dash-box span{
+        font-size: 0.9rem!important;
+    }
+    #ul-a img{
+        width: 25px!important;
+    }
+    .title, .role{
+        font-size: 0.8rem!important;
+    }
+    /* p,a,span,li,button{
+        font-size: 1.rem!important;
+        } */
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    #mySidepanel{
+        /* width: 1!important; */
+        visibility: visible !important;
+    }
+    .adminHeader{
+        padding-top: 18px!important;
+        padding-bottom: 18px!important;
+    }
+    .dash-box img{
+        width: 40px!important;
+    }
+    .dash-box span{
+        font-size: 0.6rem!important;
+    }
+    #ul-a img{
+        width: 25px!important;
+    }
+    .title, .role{
+        font-size: 0.6rem!important;
+    }
+    /* p,a,span,li,button{
+        font-size: 0.8rem!important;
+        } */
+    .content{
+        margin-left: 25%!important;
+    }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    #mySidepanel{
+        /* display: block !important; */
+        visibility: visible !important;
+    }
+    .adminHeader{
+        padding-top: 18px!important;
+        padding-bottom: 18px!important;
+    }
+    .dash-box img{
+        width: 70px!important;
+    }
+    .dash-box span{
+        font-size: 1rem!important;
+    }
+    #ul-a img{
+        width: 25px!important;
+    }
+    .title, .role{
+        font-size: 0.8rem!important;
+    }
+    /* p,a,span,li,button{
+        font-size: 1.2rem!important;
+        } */
+    .content{
+        margin-left: 25%!important;
+    }
+ }
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    #mySidepanel{
+        /* display: block !important; */
+        visibility: visible !important;
+    }
+    .title, .role{
+        font-size: 0.9rem!important;
+    }
+    /* p,span,a,li,button{
+    font-size: 1.2rem!important;
+    } */
+    .content{
+        margin-left: 25%!important;
+    }
+ }
+
+ /* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+    #mySidepanel{
+        /* display: block !important; */
+        visibility: visible !important;
+    }
+    .title, .role{
+        font-size: 0.9rem!important;
+    }
+    /* p,span,a,label,li a,button{
+    font-size: 1.5rem!important;
+    } */
+    .content{
+        margin-left: 16.67%!important;
+    }
+ }
