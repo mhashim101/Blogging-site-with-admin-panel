@@ -63,7 +63,23 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                        <form class="mb-4">
+                            <div class="mb-3">
+                                {{-- <label for="username" class="form-label">ress</label> --}}
+                                <input type="email" class="form-control" id="username" placeholder="Name" name="author">
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="useremail" class="form-label">Email address</label> --}}
+                                <input type="email" class="form-control" id="useremail" placeholder="Email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!" name="comment"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-dark">Post a Comment</button>
+                            </div>
+                        </form>
+                        <hr>
                         <!-- Comment with nested comments-->
                         <div class="d-flex mb-4">
                             <!-- Parent comment-->
