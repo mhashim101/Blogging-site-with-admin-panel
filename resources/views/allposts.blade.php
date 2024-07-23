@@ -71,7 +71,9 @@
                                     <th scope="col" class="text-center">Post By</th>
                                     <th scope="col" class="text-center">View</th>
                                     <th scope="col" class="text-center">Edit</th>
-                                    <th scope="col" class="text-center">Delete</th>
+                                    @if (Auth::user()->role == 'admin')
+                                        <th scope="col" class="text-center">Delete</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,13 +102,15 @@
                                         <td class="text-center">
                                             <a href="{{route('post.edit',$userPost->id)}}" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
                                         </td>
-                                        <td class="text-center">
-                                            <form action="{{route('post.destroy',$userPost->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>
-                                            </form>
-                                        </td>
+                                        @if (Auth::user()->role == 'admin')
+                                            <td class="text-center">
+                                                <form action="{{route('post.destroy',$userPost->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>
+                                                </form>
+                                            </td>
+                                        @endif
                                     </tr>                      
                                 @empty
                                     <tr>

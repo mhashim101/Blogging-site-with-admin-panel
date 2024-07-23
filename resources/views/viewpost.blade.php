@@ -72,8 +72,11 @@
                                             </button>
                                             <ul class="dropdown-menu" style="background-color: rgb(26, 83, 25);"
                                                 aria-labelledby="dropdownMenuButton2">
-                                                <li><a class="dropdown-item text-white"
-                                                        href="{{ route('post.edit', $post->id) }}">Edit</a></li>
+                                                <li>
+                                                    <a class="dropdown-item text-white"
+                                                        href="{{ route('post.edit', $post->id) }}">Edit</a>
+                                                </li>
+                                                @if (Auth::user()->role == 'admin')
                                                 <li>
                                                     <form action="{{ route('post.destroy', $post->id) }}" method="post">
                                                         @csrf
@@ -83,6 +86,7 @@
                                                     </form>
                                                     {{-- <a class="dropdown-item text-white" href="#">Delete</a> --}}
                                                 </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
