@@ -89,6 +89,13 @@ class UserController extends Controller
             return redirect()->route('categories')->with('success','Category Successfully Added!');
         }
      }
+
+    //  Delete Category
+    public function destroyCategory($id){
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route('categories')->with('success','Post Successfully Deleted!');
+    }
      // Show allPostsPage form
      public function allPostsPage()
      {
@@ -183,9 +190,5 @@ class UserController extends Controller
 
         return redirect('/');
     }
-
-
-
-
 
 }

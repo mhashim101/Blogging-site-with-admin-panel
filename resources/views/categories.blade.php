@@ -83,12 +83,15 @@
                                             <a href="" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
                                         </td> --}}
                                         <td class="text-center">
-                                            <form action="" method="post">
+                                            <a href="{{route('destroyCategory',$category->id)}}" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</a>
+                                        </td>
+                                        {{-- <td class="text-center">
+                                            <form action="{{route('destroyCategory',$category->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>                      
                                 @empty
                                     <tr>

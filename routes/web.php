@@ -6,14 +6,15 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 
+Route::get('/',[UserController::class,'showLoginForm'])->name('loginPage');
 Route::get('/homepage',[UserController::class,'showHomePage'])->name('homepage');
 Route::get('/homepage/postblog',[UserController::class,'showPostBlogPage'])->name('postblog');
-Route::get('/',[UserController::class,'showLoginForm'])->name('loginPage');
 Route::get('/register',[UserController::class,'showRegistrationForm'])->name('registerPage');
 Route::get('/allusers',[UserController::class,'showAllUsersPage'])->name('allusers')->middleware(ValidUser::class);
 Route::get('/categories',[UserController::class,'showCategoriesPage'])->name('categories')->middleware(ValidUser::class);
 Route::get('/categories/addcategory',[UserController::class,'showAddCategoryPage'])->name('addcategorypage')->middleware(ValidUser::class);
 Route::post('/addcategory',[UserController::class,'addcategory'])->name('addcategory')->middleware(ValidUser::class);
+Route::get('/destroyCategory/{id}',[UserController::class,'destroyCategory'])->name('destroyCategory');
 Route::get('/addpost',[UserController::class,'addPostPage'])->name('addpost')->middleware(ValidUser::class);
 Route::get('/allposts',[UserController::class,'allPostsPage'])->name('allposts')->middleware(ValidUser::class);
 Route::get('/deletebyid',[UserController::class,'deletePostPage'])->name('deletebyid')->middleware(ValidUser::class);
