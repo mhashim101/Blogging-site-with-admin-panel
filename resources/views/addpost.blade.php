@@ -41,16 +41,22 @@
                             <textarea name="description" class="form-control" id="postDec" rows="10" columns="20"></textarea>
                         </div>
                         <div class="mb-3">
-                            {{-- <div class="form-floating"> --}}
+                            
                                 <label for="floatingSelect" class="form-label">Categories</label>
-                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                  <option selected hidden>Select Category</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                <select class="form-select" id="floatingSelect" name="category_id"  aria-label="Floating label select example">
+                                    <option selected hidden>Select Category</option>
+                                    @forelse ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @empty
+                                        <option class="text-secondary">No Category Available</option>    
+                                    @endforelse
                                 </select>
-                                {{-- <label for="floatingSelect">Works with selects</label> --}}
-                            {{-- </div> --}}
+                                {{-- @foreach($categories as $category)
+                                    <div>
+                                        <input type="checkbox" name="categories[]" value="{{ $category->id }}" id="category_{{ $category->id }}">
+                                        <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+                                    </div>
+                                @endforeach --}}
                         </div>
                         <div class="mb-3">
                             <label for="postImg" class="form-label">Post Image</label>

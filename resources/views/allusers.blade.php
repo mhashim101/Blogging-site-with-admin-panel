@@ -69,7 +69,7 @@
                                     <th scope="col" class="text-center">Profile</th>
                                     <th scope="col" class="text-center">Role</th>
                                     {{-- <th scope="col" class="text-center">View</th> --}}
-                                    <th scope="col" class="text-center">Edit</th>
+                                    {{-- <th scope="col" class="text-center">Edit</th> --}}
                                     <th scope="col" class="text-center">Delete</th>
                                 </tr>
                             </thead>
@@ -92,9 +92,9 @@
                                         {{-- <td class="text-center">
                                             <a href="{{route('post.show',$user->id)}}" class="btn btn-success d-inline-block btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">View</a>
                                         </td> --}}
-                                        <td class="text-center">
+                                        {{-- <td class="text-center">
                                             <a href="{{route('post.edit',$user->id)}}" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
-                                        </td>
+                                        </td> --}}
                                         <td class="text-center">
                                             <form action="{{route('post.destroy',$user->id)}}" method="post">
                                                 @csrf

@@ -63,7 +63,8 @@ class UserController extends Controller
      // Show addPostPage form
      public function addPostPage()
      {
-         return view('addpost');
+        $categories = Category::all();
+         return view('addpost',compact('categories'));
      }
      // Show showCategoriesPage
      public function showCategoriesPage()
@@ -71,7 +72,13 @@ class UserController extends Controller
         $categories = Category::all();
          return view('categories',compact('categories'));
      }
-     // Show showAddCategoryPage
+     // Show Categories on Addpost page
+    //  public function showCategoriesOnAddPostPage()
+    //  {  
+    //     $categories = Category::all();
+    //      return view('addpost',compact('categories'));
+    //  }
+    //  // Show showAddCategoryPage
      public function showAddCategoryPage()
      {
          return view('addcategory');
@@ -114,7 +121,8 @@ class UserController extends Controller
      // Show Upate post by Id form
      public function updateById()
      {
-         return view('updatebyid');
+        $categories = Category::all();
+         return view('updateById',compact('categories'));
      }
  
      // Show viewPostPage form

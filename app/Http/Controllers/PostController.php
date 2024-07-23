@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -32,10 +33,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+       
        $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
             'user_id' => 'required|numeric',
+            'category_id' => 'required|numeric',
             'image' => 'nullable|image', // Assuming 'image' is a file upload field
         ]);
 
@@ -57,6 +60,7 @@ class PostController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
                 'user_id' => Auth::id(),
+                'category_id' => $request->category_id,
                 'image' => $imagePath,
             ]);
         }
@@ -87,8 +91,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::with('user')->find($id);
-        return view('updatepost',compact('post'));
+        $categories = Category::all();
+        $post = Post::with('user','category')->find($id);
+        return view('updatepost',compact(['post','categories']));
     }
 
     /**
@@ -100,6 +105,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
+            'category_id' => 'required|numeric',
             'image' => 'nullable|image', // Make image nullable since it's not always required
         ]);
         
@@ -114,6 +120,7 @@ class PostController extends Controller
          
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->category_id = $request->category_id;
         $post->save();
 
         if ($request->hasFile('image')) {
@@ -153,13 +160,10 @@ class PostController extends Controller
             'id' => 'required|numeric',
         ]);
         $id = Auth::user()->id;
+        $categories = Category::all();
         $post = Post::where('user_id',$id)->find($request->id);
-        // return $post;
-        if(isset($post)){
-            return view('updateById',['post'=>$post]);
-        }else{
-            return redirect()->route('updateById')->with('error', 'Post not found.');
-        }
+        // dd($post,$categories);
+        return view('updateById',compact(['post','categories']));
     }
 
     public function showPostOnDelete(Request $request){

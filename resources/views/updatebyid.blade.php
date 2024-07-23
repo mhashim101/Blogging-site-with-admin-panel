@@ -61,6 +61,17 @@
                                     <textarea name="description" class="form-control" id="postDec" rows="10" columns="20">{{ $post->description }}</textarea>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="floatingSelect" class="form-label">Categories</label>
+                                    <select class="form-select" id="floatingSelect" name="category_id"  aria-label="Floating label select example">
+                                        <option selected hidden>{{$post->category->name}}</option>
+                                        @forelse ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @empty
+                                            <option class="text-secondary">No Category Available</option>    
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label for="postImg" class="form-label">Post Title</label>
                                     <input type="file" name="image" class="form-control" id="postImg">
                                 </div>
@@ -95,6 +106,17 @@
                                 <div class="mb-3">
                                     <label for="postDec" class="form-label">Post Description</label>
                                     <textarea name="description" class="form-control" id="postDec" rows="10" columns="20"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="floatingSelect" class="form-label">Categories</label>
+                                    <select class="form-select" id="floatingSelect" name="category_id"  aria-label="Floating label select example">
+                                        <option selected hidden>Select Category</option>
+                                        @forelse ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @empty
+                                            <option class="text-secondary">No Category Available</option>    
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="postImg" class="form-label">Post Title</label>
