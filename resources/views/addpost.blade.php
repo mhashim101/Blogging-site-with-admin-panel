@@ -41,7 +41,19 @@
                             <textarea name="description" class="form-control" id="postDec" rows="10" columns="20"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="postImg" class="form-label">Post Title</label>
+                            {{-- <div class="form-floating"> --}}
+                                <label for="floatingSelect" class="form-label">Categories</label>
+                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                  <option selected hidden>Select Category</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                                {{-- <label for="floatingSelect">Works with selects</label> --}}
+                            {{-- </div> --}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="postImg" class="form-label">Post Image</label>
                             <input type="file" name="image" class="form-control" id="postImg">
                         </div>
                         <div class="mb-3">

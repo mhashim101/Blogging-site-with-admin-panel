@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,30 @@ class UserController extends Controller
      public function addPostPage()
      {
          return view('addpost');
+     }
+     // Show showCategoriesPage
+     public function showCategoriesPage()
+     {  
+        $categories = Category::all();
+         return view('categories',compact('categories'));
+     }
+     // Show showAddCategoryPage
+     public function showAddCategoryPage()
+     {
+         return view('addcategory');
+     }
+     // Show showAddCategoryPage
+     public function addcategory(Request $request)
+     {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        $categories = Category::create([
+            'name' => $request->name,
+        ]);
+        if($categories){
+            return redirect()->route('categories')->with('success','Category Successfully Added!');
+        }
      }
      // Show allPostsPage form
      public function allPostsPage()

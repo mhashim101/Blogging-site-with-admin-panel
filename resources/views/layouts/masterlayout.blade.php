@@ -115,7 +115,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item text-decoration-none ">
-                                        <a href="{{route('allusers')}}" class="nav-link text-light" >
+                                        <a href="{{route('categories')}}" class="nav-link text-light" >
                                             <img src="{{asset('img/categories-icon.png')}}" alt=""> 
                                             Categories
                                         </a>
@@ -208,7 +208,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="nav-item text-decoration-none ">
-                                                                    <a href="{{route('allusers')}}" class="nav-link text-light" >
+                                                                    <a href="{{route('categories')}}" class="nav-link text-light" >
                                                                         <img src="{{asset('img/categories-icon.png')}}" alt=""> 
                                                                         Categories
                                                                     </a>
