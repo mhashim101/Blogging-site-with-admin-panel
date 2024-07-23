@@ -9,7 +9,9 @@ class Comment extends Model
 {
     use HasFactory;
     protected $fillable = ['name','email','comment','post_id'];
-    public function posts(){
-        return $this->hasMay(Post::class);
+
+   public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

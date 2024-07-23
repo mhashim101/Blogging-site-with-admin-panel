@@ -11,45 +11,53 @@
     <div class="row">
         <div class="col-lg-8">
             <!-- Post content-->
-            @forelse ($posts as $key => $value )
-                <article>
-                    <!-- Post header-->
-                    <header class="mb-4">
-                        <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{$value->title}}</h1>
-                        <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on {{$value->created_at->format('g:i A')}}</div>
-                        <!-- Post categories-->
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$value->category->name}}</a>
-                        {{-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --}}
-                    </header>
-                    <!-- Preview image figure-->
-                    <figure class="mb-4"><img class="img-fluid rounded" src="{{asset($value->image)}}" alt="..." /></figure>
-                    <!-- Post content-->
-                    <section class="mb-5">
-                        <p class="fs-5 mb-4">{{$value->description}}</p>
-                    </section>
-                </article>
-            @empty
+            @isset($posts)
+                @foreach ($posts as $key => $value )
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{$value->title}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">Posted on {{$value->created_at->format('g:i A')}}</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$value->category->name}}</a>
+                            {{-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --}}
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{asset($value->image)}}" alt="..." /></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4">{{$value->description}}</p>
+                        </section>
+                    </article>
+                @endforeach
+            @else
                 <article>
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
                         <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on {{$posts->created_at->format('M d, Y')}}</div>
+                        <div class="text-muted fst-italic mb-2">Posted on january 2024</div>
                         <!-- Post categories-->
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$posts->category->name}}</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">JavaScript</a>
                         {{-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --}}
                     </header>
                     <!-- Preview image figure-->
-                    <figure class="mb-4"><img class="img-fluid rounded" src="{{asset($posts->image)}}" alt="..." /></figure>
+                    <figure class="mb-4"><img class="img-fluid rounded" src="" alt="..." /></figure>
                     <!-- Post content-->
                     <section class="mb-5">
-                        <p class="fs-5 mb-4">{{$posts->description}}</p>
+                        <p class="fs-5 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut porro error quidem illo sed. Iure iusto quaerat est quos, vel sequi harum alias! Distinctio cupiditate nam eos, ad consequuntur et pariatur aliquam sunt omnis quasi quo perferendis consectetur corporis vero officiis molestiae quae? Placeat nam eligendi doloribus pariatur voluptate quos, fugit aperiam, debitis perspiciatis dolore maiores at vitae autem. Accusantium perspiciatis dolorum architecto alias necessitatibus eligendi nemo! Repellat possimus commodi iure tenetur. Voluptatibus nostrum incidunt porro sint eveniet fugiat velit eos suscipit ad recusandae consequatur provident exercitationem odio alias numquam quas, facere cum. Ut, architecto nemo pariatur labore cum nam expedita possimus iure ipsum dolore quidem adipisci, maiores numquam nulla temporibus. Ullam quae et necessitatibus dolorum doloremque mollitia possimus hic esse asperiores qui, eum, eligendi molestiae, voluptatibus aliquid. Voluptatum et quasi nisi natus sapiente reiciendis minus aperiam totam fuga dolore quia nihil, alias culpa laboriosam, labore quae adipisci at modi!</p>
                     </section>
                 </article>
-            @endforelse
+            @endisset
+
+            {{-- @forelse ($posts as $key => $value )
+                
+            @empty
+                
+            @endforelse --}}
             <!-- Comments section-->
             <section class="mb-5">
                 <div class="card bg-light">

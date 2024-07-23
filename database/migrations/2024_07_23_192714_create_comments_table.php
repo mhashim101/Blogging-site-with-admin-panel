@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('category_id')
-                ->references('id')
-                ->on('categories')
-                ->cascadeOnDelete();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('author');
+            $table->string('email');
+            $table->text('comment');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('category_id');
-        });
+        Schema::dropIfExists('comments');
     }
 };

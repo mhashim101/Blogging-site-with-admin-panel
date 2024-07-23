@@ -70,7 +70,6 @@
                                 <tr>
                                     <th scope="col" >S.No</th>
                                     <th scope="col" >Name</th>
-                                    {{-- <th scope="col" class="text-center">Edit</th> --}}
                                     <th scope="col" class="text-center">Delete</th>
                                 </tr>
                             </thead>
@@ -79,19 +78,9 @@
                                     <tr>
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->name}}</td>
-                                        {{-- <td class="text-center">
-                                            <a href="" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
-                                        </td> --}}
                                         <td class="text-center">
                                             <a href="{{route('destroyCategory',$category->id)}}" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</a>
                                         </td>
-                                        {{-- <td class="text-center">
-                                            <form action="{{route('destroyCategory',$category->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>
-                                            </form>
-                                        </td> --}}
                                     </tr>                      
                                 @empty
                                     <tr>
@@ -104,21 +93,6 @@
                                         <td class="text-secondary">
                                             <span>No Record</span>
                                         </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        {{-- <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td> --}}
                                     </tr>  
                                 @endforelse      
                             </tbody>
