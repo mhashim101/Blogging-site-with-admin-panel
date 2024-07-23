@@ -26,19 +26,68 @@
         <!-- Blog entries-->
         <div class="col-lg-8">
             <!-- Featured blog post-->
-            <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                <div class="card-body">
-                    <div class="small text-muted">January 1, 2023</div>
-                    <h2 class="card-title">Featured Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                    <a class="btn primaryBtn" href="#!">Read more →</a>
+            @if (isset($latestPost))
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{{asset($latestPost->image)}}" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">{{$latestPost->created_at->format('g:i A')}}</div>
+                        <h2 class="card-title">{{$latestPost->title}}</h2>
+                        <p class="card-text">{{$latestPost->description}}</p>
+                        <a href="{{route('blogposts',$latestPost->id)}}" class="btn primaryBtn">Read more →</a>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">January 1, 2023</div>
+                        <h2 class="card-title">Featured Post Title</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                        <a class="btn primaryBtn" href="">Read more →</a>
+                    </div>
+                </div>
+            @endif
+           
+            
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
-                <div class="col-lg-6">
-                    
+                @forelse ($posts as $post)
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="{{$post->image}}" width="700px" height="350px" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted">{{$post->created_at}}</div>
+                                <h2 class="card-title h4">{{$post->title}}</h2>
+                                <p class="card-text text-truncate" style="max-width: 200px; ">{{$post->description}}</p>
+                                <a class="btn primaryBtn" href="{{route('blogposts',$post->id)}}">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted">January 1, 2023</div>
+                                <h2 class="card-title h4">Post Title</h2>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                <a class="btn primaryBtn" href="#!">Read more →</a>
+                            </div>
+                        </div>
+                    </div> 
+                @endforelse
+                    <!-- Blog post-->
+                    {{-- <div class="card mb-4">
+                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <div class="card-body">
+                            <div class="small text-muted">January 1, 2023</div>
+                            <h2 class="card-title h4">Post Title</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                            <a class="btn primaryBtn" href="#!">Read more →</a>
+                        </div>
+                    </div> --}}
+                {{-- </div> --}}
+                {{-- <div class="col-lg-6">
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body">
@@ -48,29 +97,6 @@
                             <a class="btn primaryBtn" href="#!">Read more →</a>
                         </div>
                     </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn primaryBtn" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn primaryBtn" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body">
@@ -80,12 +106,13 @@
                             <a class="btn primaryBtn" href="#!">Read more →</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- Pagination-->
             <nav aria-label="Pagination">
                 <hr class="my-0" />
-                <ul class="pagination justify-content-center my-4">
+                {{$posts->links('pagination::bootstrap-5')}}
+                {{-- <ul class="pagination justify-content-center my-4">
                     <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
                     <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
                     <li class="page-item"><a class="page-link" href="#!">2</a></li>
@@ -93,7 +120,7 @@
                     <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
                     <li class="page-item"><a class="page-link" href="#!">15</a></li>
                     <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                </ul>
+                </ul> --}}
             </nav>
         </div>
         <!-- Side widgets-->

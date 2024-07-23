@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,18 +13,28 @@ class UserController extends Controller
 {
     // Homepage of site
     public function showHomePage(){
-        // return view('Home.homepage');
         if(Auth::guest()){
-            return view('Home.homepage');
+            $latestPost = Post::orderBy('created_at', 'desc')->first();
+            $posts = Post::with('user','category')->paginate(4);
+            return view('Home.homepage',compact(['posts','latestPost']));
         }else{
             return redirect()->route('dashboard');
         }
     }
     // Homepage of site
     public function showPostBlogPage(){
-        // return view('Home.postblog');
         if(Auth::guest()){
+            // $post = Post::with('user','category')->where('id',$id)->get();
             return view('Home.postblog');
+        }else{
+            return redirect()->route('dashboard');
+        }
+    }
+    // Homepage of site
+    public function showBlogPosts($id){
+        if(Auth::guest()){
+            $posts = Post::with('user','category')->where('id',$id)->get();
+            return view('Home.postblog',compact('posts'));
         }else{
             return redirect()->route('dashboard');
         }

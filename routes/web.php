@@ -8,7 +8,8 @@ use App\Http\Controllers\GoogleController;
 
 Route::get('/',[UserController::class,'showLoginForm'])->name('loginPage');
 Route::get('/homepage',[UserController::class,'showHomePage'])->name('homepage');
-Route::get('/homepage/postblog',[UserController::class,'showPostBlogPage'])->name('postblog');
+Route::get('/homepage/postblog/',[UserController::class,'showPostBlogPage'])->name('postblog');
+Route::get('/blogposts/{id}',[UserController::class,'showBlogPosts'])->name('blogposts');
 Route::get('/register',[UserController::class,'showRegistrationForm'])->name('registerPage');
 Route::get('/allusers',[UserController::class,'showAllUsersPage'])->name('allusers')->middleware(ValidUser::class);
 Route::get('/categories',[UserController::class,'showCategoriesPage'])->name('categories')->middleware(ValidUser::class);

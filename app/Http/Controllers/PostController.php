@@ -38,7 +38,7 @@ class PostController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'user_id' => 'required|numeric',
-            'category_id' => 'required|numeric',
+            'category_id' => 'nullable|numeric',
             'image' => 'nullable|image', // Assuming 'image' is a file upload field
         ]);
 
