@@ -58,7 +58,7 @@
                     </div>
                 @endif
 
-                <div class="col-12">
+                <div class="col-12">                                    
                     <div class="table-responsive">
                         <table class="table table-success table-striped table-bordered align-middle">
                             <thead>
@@ -142,4 +142,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection
