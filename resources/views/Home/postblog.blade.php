@@ -1,10 +1,10 @@
 @extends('Home.layouts.homemasterlayout')
-@section('active_blog')
+{{-- @section('active_blog')
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('postblog')}}">Blog</a></li>
-@endsection
-@section('active_home')
+@endsection --}}
+{{-- @section('active_home')
 <li class="nav-item"><a class="nav-link" href="{{route('homepage')}}">Home</a></li>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container mt-5">
@@ -63,10 +63,17 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <!-- Comment form-->
-                        <form class="mb-4">
+                        <form action="{{route('pushComment')}}" method="post" class="mb-4">
+                            @csrf
                             <div class="mb-3">
                                 {{-- <label for="username" class="form-label">ress</label> --}}
-                                <input type="email" class="form-control" id="username" placeholder="Name" name="author">
+                                @isset($posts)
+                                @foreach ($posts as $key => $value)
+                                    
+                                @endforeach
+                                    <input type="hidden" name="post_id" value="{{$value->id}}">
+                                @endisset
+                                <input type="text" class="form-control" id="username" placeholder="Name" name="author">
                             </div>
                             <div class="mb-3">
                                 {{-- <label for="useremail" class="form-label">Email address</label> --}}
@@ -81,7 +88,7 @@
                         </form>
                         <hr>
                         <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
+                        {{-- <div class="d-flex mb-4">
                             <!-- Parent comment-->
                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                             <div class="ms-3">
@@ -104,15 +111,28 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Single comment-->
-                        <div class="d-flex">
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                        @isset($comments)
+                            @foreach ($comments as $comment)
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">{{$comment->author}}</div>
+                                        <span class="text-secondary" style="font-size: 15px;">{{$comment->created_at->format('g:i A')}}</span>
+                                        <p>{{$comment->comment}}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else    
+                            <div class="d-flex">
+                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                <div class="ms-3">
+                                    <div class="fw-bold">Commenter Name</div>
+                                    When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                </div>
                             </div>
-                        </div>
+                        @endisset
                     </div>
                 </div>
             </section>

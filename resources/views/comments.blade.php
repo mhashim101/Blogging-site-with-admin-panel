@@ -67,11 +67,14 @@
                                     <th scope="col" >Author</th>
                                     <th scope="col" >Comment</th>
                                     <th scope="col" >Email</th>
+                                    <th scope="col" >Post Title</th>
                                     <th scope="col" class="text-center">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($comments as $comment)
+                                @isset($comments)
+                                    
+                                @foreach  ($comments as $key => $comment) 
                                     <tr>
                                         <td>{{$comment->id}}</td>
                                         <td>{{$comment->author}}</td>
@@ -81,6 +84,7 @@
                                             </span>
                                         </td>
                                         <td>{{$comment->email}}</td>
+                                        <td>{{$comment->post->title}}</td>
                                         {{-- <td class="text-center">
                                             <img src="{{ asset($userPost->image) }}" width="50px" alt="">
                                         </td> --}}
@@ -95,15 +99,16 @@
                                         </td> --}}
                                         @if (Auth::user()->role == 'admin')
                                             <td class="text-center">
-                                                <form action="{{route('post.destroy',$userPost->id)}}" method="post">
+                                                <form action="{{route('destroyComment',$comment->id)}}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>
                                                 </form>
                                             </td>
                                         @endif
-                                    </tr>                      
-                                @empty
+                                    </tr>
+                                    @endforeach                      
+                                @else
                                     <tr>
                                         <td class="text-secondary">
                                             <span>No Record</span>
@@ -114,14 +119,18 @@
                                         <td class="text-secondary">
                                             <span>No Record</span>
                                         </td>
-                                        <td  class="text-secondary text-center">
+                                        <td class="text-secondary">
                                             <span>No Record</span>
                                         </td>
-                                        <td  class="text-secondary text-center">
+                                        <td class="text-secondary">
                                             <span>No Record</span>
                                         </td>
-                                    </tr>  
-                                @endforelse      
+                                        <td class="text-secondary text-center">
+                                            <span>No Record</span>
+                                        </td>
+                                        
+                                    </tr>   
+                                @endisset   
                             </tbody>
                         </table>
                     </div>

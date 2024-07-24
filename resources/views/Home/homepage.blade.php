@@ -1,12 +1,12 @@
 @extends('Home.layouts.homemasterlayout')
 
-@section('active_home')
+{{-- @section('active_home')
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a></li>
-@endsection
+@endsection --}}
 
-@section('active_blog')
+{{-- @section('active_blog')
 <li class="nav-item"><a class="nav-link" href="{{route('postblog')}}">Blog</a></li>
-@endsection
+@endsection --}}
 
 
 @section('header')

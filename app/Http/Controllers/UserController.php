@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,10 @@ class UserController extends Controller
     public function showBlogPosts($id){
         if(Auth::guest()){
             $posts = Post::with('user','category')->where('id',$id)->get();
+            $comments = Comment::where('post_id',$id)->get();
+            if($comments){
+                return view('Home.postblog',compact(['posts','comments']));
+            }
             return view('Home.postblog',compact('posts'));
         }else{
             return redirect()->route('dashboard');

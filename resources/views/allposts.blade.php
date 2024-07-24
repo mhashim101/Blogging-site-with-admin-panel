@@ -138,9 +138,6 @@
                                         <td  class="text-secondary text-center">
                                             <span>No Record</span>
                                         </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
                                     </tr>  
                                 @endforelse      
                             </tbody>

@@ -28,6 +28,9 @@ Route::get('/updateById',[UserController::class,'updateById'])->name('updateById
 
 
 Route::get('/comments',[CommentController::class,'showComments'])->name('comments')->middleware(ValidUser::class);
+Route::post('/pushComment',[CommentController::class,'pushComment'])->name('pushComment');
+Route::delete('/destroyComment/{id}',[CommentController::class,'destroyComment'])->name('destroyComment')->middleware(ValidUser::class);
+
 
 
 Route::post('/registerUser',[UserController::class,'register'])->name('registerUser');
