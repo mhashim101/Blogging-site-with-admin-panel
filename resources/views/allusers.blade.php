@@ -60,7 +60,7 @@
 
                 <div class="col-12">                                    
                     <div class="table-responsive">
-                        <table class="table table-success table-striped table-bordered align-middle">
+                        <table id="example" style="width:100%" class="display">
                             <thead>
                                 <tr>
                                     <th scope="col" >S.No</th>

@@ -15,9 +15,17 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   $user = Auth::user();
-        $post = Post::with('user')->where('user_id',$user->id)->paginate(4);
-        return view('allposts',['post'=>$post]);
+    {   
+        $user = Auth::user();
+        if($user->role == 'user'){
+            $post = Post::with('user')->where('user_id',$user->id)->get();
+            return view('allposts',['post'=>$post]);
+        }else{
+            $post = Post::with('user')->paginate(4);
+            return view('allposts',['post'=>$post]);
+
+        }
+        
     }
 
     /**

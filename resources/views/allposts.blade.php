@@ -34,6 +34,7 @@
     border-color: #dee2e6;
 }
 </style>
+
 <div class="container-fluid px-0" style="background-color: #D6EFD8;">
     <div class="row px-5" style="background-color: #D6EFD8; height: 100vh;">
         <div class="col-12">
@@ -60,7 +61,7 @@
 
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-success table-striped table-bordered align-middle">
+                        <table id="example" style="width:100%" class="display">
                             <thead>
                                 <tr>
                                     <th scope="col" >S.No</th>
@@ -143,12 +144,30 @@
                             </tbody>
                         </table>
                     </div>
-                    <div>
+                    {{-- <div>
                         {{ $post->links('pagination::bootstrap-5') }}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+{{-- <script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "pageLength": 10,
+            "lengthMenu": [5, 10, 25, 50, 75, 100],
+            "order": [[ 3, "desc" ]]
+        });
+    });
+</script> --}}

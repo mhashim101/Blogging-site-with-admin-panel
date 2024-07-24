@@ -15,9 +15,10 @@ class UserController extends Controller
     // Homepage of site
     public function showHomePage(){
         if(Auth::guest()){
+            $categories = Category::all();
             $latestPost = Post::orderBy('created_at', 'desc')->first();
             $posts = Post::with('user','category')->paginate(4);
-            return view('Home.homepage',compact(['posts','latestPost']));
+            return view('Home.homepage',compact(['posts','latestPost','categories']));
         }else{
             return redirect()->route('dashboard');
         }
