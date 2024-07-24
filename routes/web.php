@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Middleware\ValidUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -24,6 +25,9 @@ Route::get('/update',[UserController::class,'updatePostPage'])->name('update')->
 Route::get('/viewpost',[UserController::class,'viewPostPage'])->name('viewpost')->middleware(ValidUser::class);
 Route::get('/dashboard',[UserController::class,'dashboardPage'])->name('dashboard')->middleware(ValidUser::class);
 Route::get('/updateById',[UserController::class,'updateById'])->name('updateById')->middleware(ValidUser::class);
+
+
+Route::get('/comments',[CommentController::class,'showComments'])->name('comments')->middleware(ValidUser::class);
 
 
 Route::post('/registerUser',[UserController::class,'register'])->name('registerUser');

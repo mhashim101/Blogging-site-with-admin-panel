@@ -1,7 +1,7 @@
 @extends('layouts.masterlayout')
 
 @section('title')
-    All Posts
+    Comments
 @endsection
 
 @section('content')
@@ -39,10 +39,10 @@
         <div class="col-12">
             <div class="row mt-4">
                 <div class="col-10">
-                    <h1 class="fw-bold">All Posts</h1>
+                    <h1 class="fw-bold">All Comments</h1>
                 </div>
                 <div class="col-2">
-                    <a href="{{route('dashboard')}}">Home</a> \ View Posts
+                    <a href="{{route('dashboard')}}">Home</a> \ Comments
                 </div>
                 <hr class="w-100">
             </div>
@@ -64,44 +64,35 @@
                             <thead>
                                 <tr>
                                     <th scope="col" >S.No</th>
-                                    <th scope="col" >Post Title</th>
-                                    <th scope="col" >Post Description</th>
-                                    <th scope="col" >Category</th>
-                                    <th scope="col" class="text-center">Post Image</th>
-                                    <th scope="col" class="text-center">Post By</th>
-                                    <th scope="col" class="text-center">View</th>
-                                    <th scope="col" class="text-center">Edit</th>
-                                    @if (Auth::user()->role == 'admin')
-                                        <th scope="col" class="text-center">Delete</th>
-                                    @endif
+                                    <th scope="col" >Author</th>
+                                    <th scope="col" >Comment</th>
+                                    <th scope="col" >Email</th>
+                                    <th scope="col" class="text-center">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($post as $userPost)
+                                @forelse ($comments as $comment)
                                     <tr>
-                                        <td>{{$userPost->id}}</td>
-                                        <td>{{$userPost->title}}</td>
+                                        <td>{{$comment->id}}</td>
+                                        <td>{{$comment->author}}</td>
                                         <td>
                                             <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                                {{$userPost->description}}
+                                                {{$comment->comment}}
                                             </span>
                                         </td>
-                                        <td>{{$userPost->category->name}}</td>
-                                        <td class="text-center">
+                                        <td>{{$comment->email}}</td>
+                                        {{-- <td class="text-center">
                                             <img src="{{ asset($userPost->image) }}" width="50px" alt="">
-                                        </td>
-                                        <td class="text-center">
-                                            {{-- @foreach ($userPost->user_id as $user_role)
-                                                <p>{{ $user_role->role }}</p>
-                                            @endforeach --}}
+                                        </td> --}}
+                                        {{-- <td class="text-center">
                                             <span>{{$userPost->user->name}} <br> {{$userPost->user->role}}</span>
-                                        </td>
-                                        <td class="text-center">
+                                        </td> --}}
+                                        {{-- <td class="text-center">
                                             <a href="{{route('post.show',$userPost->id)}}" class="btn btn-success d-inline-block btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">View</a>
-                                        </td>
-                                        <td class="text-center">
+                                        </td> --}}
+                                        {{-- <td class="text-center">
                                             <a href="{{route('post.edit',$userPost->id)}}" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
-                                        </td>
+                                        </td> --}}
                                         @if (Auth::user()->role == 'admin')
                                             <td class="text-center">
                                                 <form action="{{route('post.destroy',$userPost->id)}}" method="post">
@@ -129,25 +120,13 @@
                                         <td  class="text-secondary text-center">
                                             <span>No Record</span>
                                         </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
-                                        <td  class="text-secondary text-center">
-                                            <span>No Record</span>
-                                        </td>
                                     </tr>  
                                 @endforelse      
                             </tbody>
                         </table>
                     </div>
                     <div>
-                        {{ $post->links('pagination::bootstrap-5') }}
+                        {{-- {{ $comments->links('pagination::bootstrap-5') }} --}}
                     </div>
                 </div>
             </div>

@@ -122,7 +122,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item text-decoration-none ">
-                                        <a href="#" class="nav-link text-light" >
+                                        <a href="{{route('comments')}}" class="nav-link text-light" >
                                             <img src="{{asset('img/comments-icon.png')}}" alt=""> 
                                             Comments
                                         </a>
@@ -307,7 +307,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="nav-item text-decoration-none ">
-                                                                        <a href="#" class="nav-link text-light" >
+                                                                        <a href="{{route('comments')}}" class="nav-link text-light" >
                                                                             <img src="{{asset('img/comments-icon.png')}}" alt=""> 
                                                                             Comments
                                                                         </a>
