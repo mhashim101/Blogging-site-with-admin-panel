@@ -6,9 +6,13 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Models\EmailVerificationToken;
 
 class UserController extends Controller
 {
@@ -76,6 +80,17 @@ class UserController extends Controller
      {
         $users  = User::where('id','!=',Auth::user()->id)->paginate(5);
          return view('allusers',compact('users'));
+     }
+     public function destroyUser($id)
+     {
+        $user = User::find($id);
+        if ($user->profile) {
+            File::delete(public_path('img/'.$user->profile));
+        }
+        $user->delete();
+        return redirect()->route('allusers')->with('success','User Successfully Deleted!');
+        // $users  = User::where('id','!=',Auth::user()->id)->paginate(5);
+        //  return view('allusers',compact('users'));
      }
      // Show addPostPage form
      public function addPostPage()
@@ -176,14 +191,31 @@ class UserController extends Controller
          ]);
          
          if ($user) {
-            // Redirect to a specific route (e.g., login page) after successful registration
-            return redirect()->route('loginPage')->with('success', 'Registration successful!');
+
+            $token = Str::random(60);
+            EmailVerificationToken::create([
+                'user_id' => $user->id,
+                'token' => $token,
+            ]);
+            $this->sendVerificationEmail($user, $token);
+            return redirect()->route('loginPage')->with('message', 'Please check your email! we have sent you an email verification link to verify you.');
+
         } else {
             // Handle registration failure if necessary
             return redirect()->back()->withInput()->withErrors(['error' => 'Registration failed. Please try again.']);
         }
          
      }
+
+     protected function sendVerificationEmail($user, $token)
+    {
+        $verificationUrl = route('verify.email', ['token' => $token]);
+
+        Mail::send('emails.verify', ['url' => $verificationUrl], function ($message) use ($user) {
+            $message->to($user->email);
+            $message->subject('Email Verification');
+        });
+    }
 
 
      public function login(Request $request)
@@ -192,16 +224,30 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
         ]);
+       
+            if (Auth::attempt($credentials)) {
+                // Retrieve the authenticated user
+                $user = User::where('email', $request->email)->first();
+        
+                // Check if user exists and if their email is verified
+                if ($user && $user->email_verified_at !== null) {
+                    // Redirect to the dashboard
+                    return redirect()->route('dashboard');
+                } else {
+                    // Log the user out if email is not verified
+                    Auth::logout();
+                    return back()->withErrors([
+                        'email' => 'Your email address is not verified.',
+                    ]);
+                }
+            } else {
+                // Authentication failed
+                return back()->withErrors([
+                    'email' => 'The provided credentials do not match our records.',
+                ]);
+            }
 
-        // Attempt to authenticate the user
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
-        } else {
-            return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ]);
-        }
-    }
+}
 
 
     // Logout method

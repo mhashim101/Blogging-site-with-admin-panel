@@ -16,10 +16,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    public function posts()
+    public function post()
     {
         return $this->hasMany(Post::class);
     }
+    public function emailverificationtoken()
+    {
+        return $this->hasMany(EmailVerificationToken::class);
+    }
+    
+
+    // public function hasVerifiedEmail()
+    // {
+    //     return !is_null($this->email_verified_at);
+    // }
 
     protected $fillable = [
         'name',

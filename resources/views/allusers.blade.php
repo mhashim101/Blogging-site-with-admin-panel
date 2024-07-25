@@ -96,7 +96,7 @@
                                             <a href="{{route('post.edit',$user->id)}}" class="btn btn-warning btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mb-2 mx-2">Edit</a>
                                         </td> --}}
                                         <td class="text-center">
-                                            <form action="{{route('post.destroy',$user->id)}}" method="post">
+                                            <form action="{{route('deleteUser',$user->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-xl btn-lg btn-md btn-sm mb-md-0 mb-sm-2 mx-2">Delete</button>

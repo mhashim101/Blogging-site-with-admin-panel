@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\CommentController;
 use App\Http\Middleware\ValidUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\EmailVerificationController;
 
+Route::get('/emails/verify/{token}', [EmailVerificationController::class, 'verify'])->name('verify.email');
+Route::delete('/deleteUser/{id}',[UserController::class,'destroyUser'])->name('deleteUser');
+
+Route::view('verifyemail','/verifyemail')->name('verifyemail');
 Route::get('/',[UserController::class,'showLoginForm'])->name('loginPage');
 Route::get('/homepage',[UserController::class,'showHomePage'])->name('homepage');
 Route::get('/homepage/postblog/',[UserController::class,'showPostBlogPage'])->name('postblog');
@@ -23,7 +28,10 @@ Route::get('/allposts',[UserController::class,'allPostsPage'])->name('allposts')
 Route::get('/deletebyid',[UserController::class,'deletePostPage'])->name('deletebyid')->middleware(ValidUser::class);
 Route::get('/update',[UserController::class,'updatePostPage'])->name('update')->middleware(ValidUser::class);
 Route::get('/viewpost',[UserController::class,'viewPostPage'])->name('viewpost')->middleware(ValidUser::class);
-Route::get('/dashboard',[UserController::class,'dashboardPage'])->name('dashboard')->middleware(ValidUser::class);
+
+
+
+Route::get('/dashboard',[UserController::class,'dashboardPage'])->name('dashboard')->middleware(['ok-user']);
 Route::get('/updateById',[UserController::class,'updateById'])->name('updateById')->middleware(ValidUser::class);
 
 
