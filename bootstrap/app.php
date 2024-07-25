@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Middleware\EnsureEmailIsVerified;
 use App\Http\Middleware\ValidUser;
+use App\Http\Middleware\NotLoggedIn;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('ok-user',[
             ValidUser::class,
+            NotLoggedIn::class,
             EnsureEmailIsVerified::class,
         ]);
     })

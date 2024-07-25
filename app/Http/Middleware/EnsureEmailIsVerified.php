@@ -17,7 +17,7 @@ class EnsureEmailIsVerified
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && !Auth::user()->email_verified_at) {
-            return redirect('/emails/notverified')->with('error', 'You need to verify your email address.');
+            return redirect()->route('/emails/notverified')->with('error', 'You need to verify your email address.');
         }
         return $next($request);
     }

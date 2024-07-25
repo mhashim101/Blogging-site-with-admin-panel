@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class ValidUser
+class NotLoggedIn
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class ValidUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::guest() == false){
+        if(!Auth::guest()){
             return $next($request);
         }else{
             return redirect()->route('loginPage');

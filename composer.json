@@ -54,6 +54,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
+        "laravel/socialite": "^5.15",
         "yajra/laravel-datatables-oracle": "^11.1"
     }
 }

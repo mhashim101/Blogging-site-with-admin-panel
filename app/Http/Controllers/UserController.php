@@ -237,13 +237,13 @@ class UserController extends Controller
                     // Log the user out if email is not verified
                     Auth::logout();
                     return back()->withErrors([
-                        'email' => 'Your email address is not verified.',
+                        'error' => 'Your email address is not verified.',
                     ]);
                 }
             } else {
                 // Authentication failed
                 return back()->withErrors([
-                    'email' => 'The provided credentials do not match our records.',
+                    'error' => 'The provided credentials do not match our records.',
                 ]);
             }
 
@@ -254,11 +254,8 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
